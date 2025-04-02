@@ -1,19 +1,8 @@
-import React from "react";
+import type React from "react";
 import type { Metadata } from "next";
 import Providers from "./Providers";
 import { JetBrains_Mono } from "next/font/google";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 const jetbrains = JetBrains_Mono({
   subsets: ["latin"],
