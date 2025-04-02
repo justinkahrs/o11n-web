@@ -34,7 +34,7 @@ export default function TestimonialsSection() {
             sx={{
               minWidth: 300,
               flex: "0 0 auto",
-              background: "linear-gradient(145deg, #333, #111)",
+              
               color: "#fff",
             }}
           >

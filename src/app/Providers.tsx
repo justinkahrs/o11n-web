@@ -1,17 +1,9 @@
 "use client";
 
 import React from "react";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
-
-const theme = createTheme({
-  palette: {
-    mode: "dark",
-  },
-  typography: {
-    fontFamily: "Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif",
-  },
-});
+import theme from "../theme";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (

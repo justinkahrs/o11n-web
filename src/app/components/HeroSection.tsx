@@ -11,22 +11,17 @@ export default function HeroSection() {
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
-        background: "radial-gradient(circle, rgba(33,33,33,1) 0%, rgba(0,0,0,1) 100%)",
       }}
     >
       <Stack spacing={2} alignItems="center">
-        <Typography
-          variant="h3"
-          sx={{
-            fontFamily: "monospace",
-            color: "#fff",
-            textShadow: "0 0 5px #0ff, 0 0 10px #0ff",
-          }}
-        >
-          o11n
-        </Typography>
+        <img
+          src="/o11n-first-logo-transparent.png"
+          alt="o11n logo"
+          style={{ width: "400px" }}
+        />
         <Typography variant="h2" sx={{ fontWeight: "bold" }}>
-          Orchestrate your code. Just vibe.
+          Orchestrate your code. <br />
+          Just vibe.
         </Typography>
         <Typography variant="subtitle1">
           Talk to AI. Let it build. You stay in flow.
