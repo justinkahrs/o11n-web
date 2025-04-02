@@ -11,6 +11,7 @@ export default function HeroSection() {
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
+        mx: 2,
       }}
     >
       <Stack spacing={2} alignItems="center">

@@ -9,7 +9,7 @@ export default function CallToActionSection() {
   };
 
   return (
-    <Box sx={{ py: 8, textAlign: "center" }}>
+    <Box sx={{ py: 8, textAlign: "center", mx: 2 }}>
       <Typography variant="h4" sx={{ mb: 2 }}>
         Join the Beta
       </Typography>

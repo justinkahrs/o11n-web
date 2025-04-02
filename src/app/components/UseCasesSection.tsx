@@ -4,12 +4,26 @@ import { Box, Typography, List, ListItem, ListItemText } from "@mui/material";
 
 export default function UseCasesSection() {
   return (
-    <Box sx={{ py: 8 }}>
+    <Box
+      sx={{
+        py: 8,
+        mx: 2,
+        backgroundColor: "#f5f5f5",
+        borderRadius: 20,
+        color: "black",
+      }}
+    >
       <Typography variant="h4" align="center" sx={{ mb: 4 }}>
-        What It’s For
+        Who is this for?
       </Typography>
-      <Typography variant="body1" align="center" sx={{ mb: 4, maxWidth: 600, mx: "auto" }}>
-        o11n is for non-coders, baby devs, creative weirdos, and anyone who just wants to build.
+      <Typography
+        variant="body1"
+        align="center"
+        sx={{ mb: 4, maxWidth: 600, mx: "auto" }}
+      >
+        o11n is for non-coders, baby devs, creative weirdos, senior devs in
+        loveless relationships with their current tools, and anyone who just
+        wants to build things without friction.
       </Typography>
       <List sx={{ maxWidth: 600, mx: "auto" }}>
         <ListItem>

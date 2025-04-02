@@ -44,7 +44,7 @@ export default function Footer() {
         </Link>
       </Stack>
       <Typography variant="body2" align="center" sx={{ color: "#aaa" }}>
-        o11n is short for orchestration. But we’re vibing.
+        o11n is short for orchestration. <br /> But we’re vibing.
       </Typography>
     </Box>
   );

@@ -12,7 +12,7 @@ export default function PersonalizationSection() {
   ];
 
   return (
-    <Box sx={{ py: 8 }}>
+    <Box sx={{ py: 8, mx: 2 }}>
       <Typography variant="h4" align="center" sx={{ mb: 4 }}>
         Personalization = Vibes
       </Typography>
