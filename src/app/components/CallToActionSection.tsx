@@ -86,7 +86,7 @@ export default function CallToActionSection() {
             transition={{ duration: 3 }}
           >
             <Typography variant="h4" className="glitch">
-              We'll talk soon.
+              We&apos;ll talk soon.
             </Typography>
             <style jsx>{`
               @keyframes glitch {
