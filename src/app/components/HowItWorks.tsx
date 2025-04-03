@@ -31,12 +31,10 @@ export default function HowItWorks() {
         How It Works
       </Typography>
       <Grid container spacing={8} justifyContent="center">
-        {steps.map((step, index) => (
+        {steps.map((step) => (
           <Grid
-            key={index}
-            item
-            xs={12}
-            md={4}
+            key={step.title}
+            component="div"
             sx={{
               textAlign: "center",
               p: 4,
