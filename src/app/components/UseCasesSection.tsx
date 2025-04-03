@@ -9,7 +9,7 @@ export default function UseCasesSection() {
 
   useEffect(() => {
     if (!lenis) return;
-    const updateStyle = (e) => {
+    const updateStyle = (e: { scroll: number }) => {
       const currentScroll =
         e && e.scroll !== undefined ? e.scroll : lenis.scroll;
       const total = document.documentElement.scrollHeight - window.innerHeight;

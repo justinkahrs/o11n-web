@@ -6,19 +6,14 @@ import { CssBaseline } from "@mui/material";
 import theme from "../theme";
 import Lenis from "lenis";
 
-export const LenisContext = createContext(null);
+export const LenisContext = createContext<Lenis | null>(null);
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   const [lenisInstance, setLenisInstance] = useState<Lenis | null>(null);
 
   useEffect(() => {
     const lenis = new Lenis({
-      smooth: true,
       lerp: 0.1,
-      direction: "vertical",
-      gestureDirection: "vertical",
-      mouseMultiplier: 1,
-      smoothTouch: false,
       touchMultiplier: 2,
       infinite: false,
     });
