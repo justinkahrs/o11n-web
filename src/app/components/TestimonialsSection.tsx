@@ -1,7 +1,7 @@
 "use client";
-import React, { useRef, useState, useEffect } from "react";
-import { Box, Typography, Card, CardContent } from "@mui/material";
-import { motion, useAnimation } from "framer-motion";
+import React from "react";
+import { Typography, Card, CardContent } from "@mui/material";
+import { motion } from "framer-motion";
 
 const testimonials = [
   {
@@ -56,95 +56,61 @@ const testimonials = [
   },
 ];
 
+// Duplicate testimonials for seamless looping
+const repeatedTestimonials = [...testimonials, ...testimonials];
+
 export default function TestimonialsSection() {
-  // Duplicate the testimonials for a seamless marquee
-  const repeatedTestimonials = [...testimonials, ...testimonials];
-
-  const containerRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-
-  // State to keep track of measured dimensions
-  const [containerWidth, setContainerWidth] = useState(0);
-  const [contentWidth, setContentWidth] = useState(0);
-
-  // Framer Motion animation controls
-  const controls = useAnimation();
-
-  useEffect(() => {
-    // Measure the container and content whenever the window resizes
-    const measure = () => {
-      if (containerRef.current && contentRef.current) {
-        setContainerWidth(containerRef.current.offsetWidth);
-        setContentWidth(contentRef.current.scrollWidth);
-      }
-    };
-
-    measure(); // Measure initially on mount
-    window.addEventListener("resize", measure);
-    return () => {
-      window.removeEventListener("resize", measure);
-    };
-  }, []);
-
-  useEffect(() => {
-    // Once we know widths, start the marquee
-    if (containerWidth && contentWidth) {
-      // Because we duplicated the testimonials, effectively half of the total content
-      // covers all unique cards.
-      const distanceToScroll = contentWidth / 2;
-
-      // Adjust speed by dividing distance by some speed factor (e.g., 50 for slow, 80 for faster, etc.)
-      const duration = distanceToScroll / 50;
-
-      controls.start({
-        x: -distanceToScroll,
-        transition: {
-          duration,
-          ease: "linear",
-          repeat: Infinity,
-          repeatType: "loop",
-        },
-      });
-    }
-  }, [containerWidth, contentWidth, controls]);
-
   return (
-    <Box sx={{ py: 20, overflow: "hidden" }} ref={containerRef}>
-      <Typography variant="h4" align="center" sx={{ mb: 4 }}>
+    <div
+      style={{
+        overflow: "hidden",
+        marginTop: "32px",
+        position: "relative",
+        height: "300px",
+      }}
+    >
+      <Typography variant="h4" align="center" style={{ marginBottom: "16px" }}>
         What People Could Be Saying
       </Typography>
-      <Box
-        component={motion.div}
-        sx={{ display: "flex" }}
-        ref={contentRef}
-        animate={controls}
-        initial={{ x: 0 }}
+      <motion.div
+        style={{ display: "inline-flex", whiteSpace: "nowrap" }}
+        animate={{ x: ["0%", "-50%"] }}
+        transition={{
+          duration: 80,
+          ease: "linear",
+          repeat: Number.POSITIVE_INFINITY,
+        }}
       >
         {repeatedTestimonials.map((t, i) => (
           <Card
-            key={i}
+            key={`${t.quote}-${i}`}
             sx={{
               minWidth: 300,
-              flex: "0 0 auto",
+              marginRight: 2,
+              backgroundColor: i % 2 === 0 ? "primary.main" : "secondary.main",
+              mt: i % 2 === 0 ? 2 : 0,
+              mb: i % 2 !== 0 ? 2 : 0,
               color: "#fff",
-              mr: 2,
             }}
           >
             <CardContent>
-              <Typography variant="body1" sx={{ fontStyle: "italic" }}>
+              <Typography
+                variant="body1"
+                sx={{
+                  fontStyle: "italic",
+                  whiteSpace: "normal",
+                  wordBreak: "break-word",
+                }}
+              >
                 “{t.quote}”
               </Typography>
-              <Typography
-                variant="caption"
-                display="block"
-                sx={{ mt: 2, opacity: 0.8 }}
-              >
+              <Typography variant="caption" sx={{ marginTop: 2, opacity: 0.8 }}>
                 — {t.author}
               </Typography>
             </CardContent>
           </Card>
         ))}
-      </Box>
-    </Box>
+      </motion.div>
+    </div>
   );
 }
