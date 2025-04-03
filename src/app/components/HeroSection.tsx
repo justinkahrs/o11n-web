@@ -2,8 +2,23 @@
 import React from "react";
 import { Box, Typography, Button, Stack } from "@mui/material";
 import { motion } from "framer-motion";
+import { useContext } from "react";
+import { LenisContext } from "../Providers";
 
 export default function HeroSection() {
+  const lenis = useContext(LenisContext);
+
+  const handleGetEarlyAccess = () => {
+    if (lenis) {
+      lenis.scrollTo("#cta", { duration: 1 });
+      setTimeout(() => {
+        const input = document.getElementById("email-input") as HTMLInputElement;
+        if (input) {
+          input.focus();
+        }
+      }, 1100);
+    }
+  };
   return (
     <Box
       sx={{
@@ -42,7 +57,7 @@ export default function HeroSection() {
             mt={2}
             justifyContent="center"
           >
-            <Button variant="contained" color="primary">
+            <Button variant="contained" color="primary" onClick={handleGetEarlyAccess}>
               Get Early Access
             </Button>
             <Button variant="outlined" color="secondary">

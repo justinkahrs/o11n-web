@@ -49,7 +49,7 @@ export default function UseCasesSection() {
         </Typography>
         <Typography
           variant="body1"
-          align="center"
+          align="left"
           sx={{ mb: 4, maxWidth: 600, mx: "auto" }}
         >
           o11n is for non-coders, baby devs, creative weirdos, senior devs in
