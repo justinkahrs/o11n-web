@@ -14,7 +14,10 @@ import { useState } from "react";
 export default function CallToActionSection() {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+const [isSubmitted, setIsSubmitted] = useState(false);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const isValidName = firstName.trim() !== "" && lastName.trim() !== "";
   const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -25,7 +28,7 @@ export default function CallToActionSection() {
       await fetch("/api/joinBeta", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+body: JSON.stringify({ email, firstName, lastName }),
       });
       setIsSubmitted(true);
     } catch (error) {
@@ -55,7 +58,25 @@ export default function CallToActionSection() {
               onSubmit={handleSubmit}
               sx={{ display: "inline-block" }}
             >
-              <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
+<Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
+                <TextField
+                  id="first-name-input"
+                  type="text"
+                  label="First Name"
+                  required
+                  variant="outlined"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
+                <TextField
+                  id="last-name-input"
+                  type="text"
+                  label="Last Name"
+                  required
+                  variant="outlined"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                />
                 <TextField
                   id="email-input"
                   type="email"
@@ -68,7 +89,7 @@ export default function CallToActionSection() {
                 <Button
                   variant="contained"
                   type="submit"
-                  disabled={!isValidEmail || isSubmitting}
+disabled={!isValidEmail || !isValidName || isSubmitting}
                 >
                   {isSubmitting ? (
                     <CircularProgress size={24} color="inherit" />
