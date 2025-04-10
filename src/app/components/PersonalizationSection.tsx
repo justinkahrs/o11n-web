@@ -38,8 +38,8 @@ export default function PersonalizationSection() {
           do the rest.
         </Typography>
         <List sx={{ maxWidth: 600, mx: "auto" }}>
-          {items.map((item, idx) => (
-            <ListItem key={idx}>
+          {items.map((item) => (
+            <ListItem key={item}>
               <ListItemIcon>
                 <CheckCircleIcon color="success" />
               </ListItemIcon>

@@ -1,13 +1,10 @@
 "use client";
 import type React from "react";
-import { useContext, useEffect, useRef, useState } from "react";
 import { Box, Typography, Grid } from "@mui/material";
-import { motion } from "framer-motion";
 import FolderOpenIcon from "@mui/icons-material/FolderOpen";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
-import { LenisContext } from "../Providers";
-
+import AnimatedStep from "./AnimatedStep";
 const steps = [
   {
     title: "Pick a project",
@@ -26,48 +23,6 @@ const steps = [
     icon: <AutoFixHighIcon sx={{ fontSize: "3rem", mb: 2 }} />,
   },
 ];
-
-function AnimatedStep({
-  children,
-  offset,
-}: {
-  children: React.ReactNode;
-  offset: number;
-}) {
-  const lenis = useContext(LenisContext);
-  const ref = useRef<HTMLDivElement>(null);
-  const [animProgress, setAnimProgress] = useState(0);
-
-  useEffect(() => {
-    if (!lenis) return;
-    const handleScroll = () => {
-      if (ref.current) {
-        const rect = ref.current.getBoundingClientRect();
-        let progress = (window.innerHeight - rect.top) / window.innerHeight;
-        progress = Math.max(0, Math.min(progress, 1));
-        const effectiveProgress = Math.min(progress, 0.5);
-        setAnimProgress(effectiveProgress);
-      }
-    };
-    lenis.on("scroll", handleScroll);
-    // Initial check in case element is already in view
-    handleScroll();
-    return () => {
-      lenis.off("scroll", handleScroll);
-    };
-  }, [lenis]);
-
-  const factor = animProgress / 0.5; // scales from 0 to 1
-  const xValue = offset * (1 - factor);
-  const opacityValue = factor;
-
-  return (
-    <motion.div ref={ref} style={{ x: xValue, opacity: opacityValue }}>
-      {children}
-    </motion.div>
-  );
-}
-
 export default function HowItWorks() {
   return (
     <Box sx={{ py: 4, my: 20 }}>

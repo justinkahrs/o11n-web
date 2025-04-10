@@ -22,10 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`${jetbrains.variable}`}
-        style={{ margin: 0, background: "#162A2C" }}
-      >
+      <body className={`${jetbrains.variable}`} style={{ margin: 0 }}>
         <Providers>{children}</Providers>
       </body>
     </html>
