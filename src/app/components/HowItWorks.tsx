@@ -1,7 +1,6 @@
 "use client";
 import type React from "react";
 import { Box, Typography, Grid } from "@mui/material";
-import { motion, useScroll, useTransform } from "framer-motion";
 import FolderOpenIcon from "@mui/icons-material/FolderOpen";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";

@@ -11,15 +11,15 @@ export default function CallToActionSection() {
       transition={{ duration: 0.8 }}
     >
       <Box
-  id="cta"
-  sx={{
-    py: 8,
-    textAlign: "center",
-    mx: "auto",
-    px: 2,
-    maxWidth: { xs: '90%', sm: '600px' },
-  }}
->
+        id="cta"
+        sx={{
+          py: 8,
+          textAlign: "center",
+          mx: "auto",
+          px: 2,
+          maxWidth: { xs: "90%", sm: "600px" },
+        }}
+      >
         <>
           <Typography variant="h4" sx={{ mb: 2 }}>
             Same price as a video game
@@ -29,7 +29,17 @@ export default function CallToActionSection() {
               One time fee, use it forever.
             </Typography>
             <Button variant="contained" color="primary">
-              Buy now
+              Buy now{" "}
+              <span
+                style={{
+                  textDecoration: "line-through",
+                  marginLeft: "0.5em",
+                  marginRight: "0.5em",
+                }}
+              >
+                $99
+              </span>{" "}
+              $69
             </Button>
           </Stack>
         </>

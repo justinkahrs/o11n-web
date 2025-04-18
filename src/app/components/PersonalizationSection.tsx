@@ -60,8 +60,8 @@ export default function PersonalizationSection() {
           align="center"
           sx={{ mb: 4, maxWidth: 600, mx: "auto" }}
         >
-          Make o11n your own. Choose your theme, color palette, and let the AI
-          do the rest.
+          Make o11n your own. Choose whatever theme is gonna help you get stuff
+          done.
         </Typography>
         <Box
           sx={{

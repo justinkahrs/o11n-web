@@ -1,10 +1,11 @@
 "use client";
 import React from "react";
-import { Box, Typography, Stack, Link } from "@mui/material";
+import { Box, Typography, Stack, Link, useTheme } from "@mui/material";
 import InstaIcon from "@mui/icons-material/Instagram";
 import { motion } from "framer-motion";
 
 export default function Footer() {
+  const theme = useTheme();
   return (
     <motion.div
       initial={{ x: -100, opacity: 0 }}
@@ -23,14 +24,19 @@ export default function Footer() {
             href="https://www.instagram.com/o11n.app/"
             target="_blank"
             rel="noopener noreferrer"
-            sx={{ display: "flex", alignItems: "center", color: "#fff" }}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              color: theme.palette.text.primary,
+            }}
           >
             <InstaIcon sx={{ mr: 1 }} />
             Instagram
           </Link>
         </Stack>
         <Typography variant="body2" align="center" sx={{ color: "#aaa" }}>
-          o11n is short for orchestration. <br /> But we’re vibing.
+          o11n is short for orchestration. <br /> It's pronounced
+          &quot;o11n&quot;.
         </Typography>
       </Box>
     </motion.div>

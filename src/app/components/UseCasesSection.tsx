@@ -98,7 +98,7 @@ export default function UseCasesSection() {
             sx={{ listStyleType: "disc", pl: 4, flex: "1 1 300px" }}
           >
             <ListItem sx={{ display: "list-item" }}>
-              <ListItemText primary="Build side projects" />
+              <ListItemText primary="Save and use custom prompts" />
             </ListItem>
             <ListItem sx={{ display: "list-item" }}>
               <ListItemText primary="Keep track of the characters in your novel" />

@@ -55,6 +55,7 @@ export default function HeroSection() {
         >
           <Typography variant="h3" sx={{ fontWeight: "bold" }}>
             Orchestrate your code. <br />
+            Customize the theme. <br />
             Just vibe.
           </Typography>
           <Typography variant="subtitle1" sx={{ maxWidth: "700px" }}>

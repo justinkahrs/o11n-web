@@ -3,6 +3,7 @@
 import React from "react";
 import { Container } from "@mui/material";
 import HeroSection from "./components/HeroSection";
+import ScreenshotsCarousel from "./components/ScreenshotsCarousel";
 import HowItWorks from "./components/HowItWorks";
 import UseCasesSection from "./components/UseCasesSection";
 import PersonalizationSection from "./components/PersonalizationSection";
@@ -14,6 +15,7 @@ export default function Home() {
   return (
     <Container>
       <HeroSection />
+      <ScreenshotsCarousel />
       <HowItWorks />
       <UseCasesSection />
       <PersonalizationSection />
