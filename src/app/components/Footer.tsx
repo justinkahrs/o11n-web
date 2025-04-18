@@ -35,7 +35,7 @@ export default function Footer() {
           </Link>
         </Stack>
         <Typography variant="body2" align="center" sx={{ color: "#aaa" }}>
-          o11n is short for orchestration. <br /> It's pronounced
+          o11n is short for orchestration. <br /> It&apos;s pronounced
           &quot;o11n&quot;.
         </Typography>
       </Box>
