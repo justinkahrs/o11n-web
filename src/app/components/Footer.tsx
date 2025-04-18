@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Box, Typography, Stack, Link } from "@mui/material";
-import GitHubIcon from "@mui/icons-material/GitHub";
+import InstaIcon from "@mui/icons-material/Instagram";
 import { motion } from "framer-motion";
 
 export default function Footer() {
@@ -20,13 +20,13 @@ export default function Footer() {
           sx={{ mb: 2 }}
         >
           <Link
-            href="https://github.com/justinkahrs/o11n"
+            href="https://www.instagram.com/o11n.app/"
             target="_blank"
             rel="noopener noreferrer"
             sx={{ display: "flex", alignItems: "center", color: "#fff" }}
           >
-            <GitHubIcon sx={{ mr: 1 }} />
-            GitHub
+            <InstaIcon sx={{ mr: 1 }} />
+            Instagram
           </Link>
         </Stack>
         <Typography variant="body2" align="center" sx={{ color: "#aaa" }}>

@@ -12,7 +12,9 @@ export default function HeroSection() {
     if (lenis) {
       lenis.scrollTo("#cta", { duration: 1 });
       setTimeout(() => {
-        const input = document.getElementById("email-input") as HTMLInputElement;
+        const input = document.getElementById(
+          "email-input"
+        ) as HTMLInputElement;
         if (input) {
           input.focus();
         }
@@ -57,11 +59,15 @@ export default function HeroSection() {
             mt={2}
             justifyContent="center"
           >
-            <Button variant="contained" color="primary" onClick={handleGetEarlyAccess}>
-              Get Early Access
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleGetEarlyAccess}
+            >
+              Buy now
             </Button>
             <Button variant="outlined" color="secondary">
-              See It in Action
+              See It Work
             </Button>
           </Stack>
         </motion.div>
