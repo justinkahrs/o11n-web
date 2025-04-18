@@ -12,7 +12,7 @@ import Footer from "./components/Footer";
 
 export default function Home() {
   return (
-    <Container disableGutters>
+    <Container>
       <HeroSection />
       <HowItWorks />
       <UseCasesSection />

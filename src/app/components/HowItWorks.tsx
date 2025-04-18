@@ -16,7 +16,7 @@ const steps = [
   {
     title: "Shoot your shot",
     description:
-      "Just say what you want to do—like “Add a shopping cart to my app” or “Use the webcam to show my video.” The AI will take it from there.",
+      "Just say what you want to do, like “Add a shopping cart to my app” or “Use the webcam to show my video”, and o11n will take it from there.",
     icon: <ChatBubbleOutlineIcon sx={{ fontSize: "3rem", mb: 2 }} />,
   },
   {
@@ -26,9 +26,6 @@ const steps = [
   },
 ];
 export default function HowItWorks() {
-  const { scrollY } = useScroll();
-  const comb1Y = useTransform(scrollY, [0, 500], [0, 50]);
-  const comb2Y = useTransform(scrollY, [0, 500], [0, -50]);
   return (
     <Box
       sx={{
@@ -38,35 +35,6 @@ export default function HowItWorks() {
         overflow: "hidden",
       }}
     >
-      {/* Parallax comb layers */}
-      <motion.div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 5,
-          width: "50%",
-          height: "100%",
-          y: comb1Y,
-          background:
-            "repeating-linear-gradient(90deg, transparent, transparent 10px, rgba(0,0,0,0.05) 10px, rgba(0,0,0,0.05) 20px)",
-          opacity: 0.3,
-          pointerEvents: "none",
-        }}
-      />
-      <motion.div
-        style={{
-          position: "absolute",
-          top: 0,
-          right: 0,
-          width: "50%",
-          height: "100%",
-          y: comb2Y,
-          background:
-            "repeating-linear-gradient(90deg, rgba(0,0,0,0.05), rgba(0,0,0,0.05) 10px, transparent 10px, transparent 20px)",
-          opacity: 0.3,
-          pointerEvents: "none",
-        }}
-      />
       <Typography variant="h4" align="center" sx={{ mb: 4 }}>
         How It Works
       </Typography>

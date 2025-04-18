@@ -4,6 +4,7 @@ import { Box, Typography, Button, Stack } from "@mui/material";
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import { LenisContext } from "../Providers";
+import LogoSVG from "./LogoSVG";
 
 export default function HeroSection() {
   const lenis = useContext(LenisContext);
@@ -32,32 +33,41 @@ export default function HeroSection() {
         mx: 2,
       }}
     >
-      <Stack spacing={2} alignItems="center">
-        <motion.img
-          src="/o11n-first-logo-transparent.png"
-          alt="o11n logo"
-          style={{ width: "400px" }}
+      <Stack
+        spacing={2}
+        alignItems="center"
+        sx={{ width: { xs: "80%", sm: "auto" } }}
+      >
+        <motion.div
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 2 }}
-        />
+        >
+          <Box>
+            <LogoSVG width="100%" height="auto" />
+          </Box>
+        </motion.div>
+
         <motion.div
           initial={{ y: -100, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <Typography variant="h2" sx={{ fontWeight: "bold" }}>
+          <Typography variant="h3" sx={{ fontWeight: "bold" }}>
             Orchestrate your code. <br />
             Just vibe.
           </Typography>
-          <Typography variant="subtitle1">
-            Talk to AI. Let it build. You stay in flow.
+          <Typography variant="subtitle1" sx={{ maxWidth: "700px" }}>
+            Never again worry about crafting the perfect prompt. You talk to
+            your files, while o11n handles talking to AI, so you can stay in the
+            flow.
           </Typography>
           <Stack
             direction={{ xs: "column", sm: "row" }}
             spacing={2}
             mt={2}
             justifyContent="center"
+            alignItems="center"
           >
             <Button
               variant="contained"

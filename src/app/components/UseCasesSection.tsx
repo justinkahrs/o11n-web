@@ -59,11 +59,9 @@ export default function UseCasesSection() {
           align="left"
           sx={{ mb: 4, maxWidth: 600, mx: "auto" }}
         >
-          First of all, only you can decide what you should or should not do.
-          Live your life intentionally. Second, o11n was made for non-coders,
-          baby devs, creative weirdos, senior devs in loveless relationships
-          with their current tools, or anyone who just wants to build things
-          without friction.
+          o11n was made for non-coders, baby devs, creative weirdos, senior devs
+          in loveless relationships with their current tools, or anyone who just
+          wants to build things without friction.
         </Typography>
         <Typography variant="h4" align="center" sx={{ my: 4 }}>
           What you can do with it
