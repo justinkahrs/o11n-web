@@ -60,7 +60,7 @@ export default function HeroSection() {
           </Typography>
           <Typography variant="subtitle1" sx={{ maxWidth: "700px" }}>
             Never again worry about crafting the perfect prompt. You talk to
-            your files, while o11n handles talking to AI, so you can stay in the
+            your files while o11n handles talking to AI, so you can stay in the
             flow.
           </Typography>
           <Stack

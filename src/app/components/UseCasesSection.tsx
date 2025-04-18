@@ -7,12 +7,29 @@ import {
   ListItem,
   ListItemText,
   Button,
+  useTheme,
+  useMediaQuery,
 } from "@mui/material";
 import { LenisContext } from "../Providers";
 
 export default function UseCasesSection() {
-  const lenis = useContext(LenisContext);
+const lenis = useContext(LenisContext);
   const [transformStyle, setTransformStyle] = useState({});
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const useCases = [
+    "Edit many files at once",
+    "Find and fix bugs across a codebase",
+    "Include documentation as context",
+    "Make large sweeping changes, instantly",
+    "Save and use custom prompts",
+    "Keep track of the characters in your novel",
+    "Analyze large sets of data",
+    "Chat with your files without making changes",
+  ];
+  const splitIndex = Math.ceil(useCases.length / 2);
+  const firstHalf = useCases.slice(0, splitIndex);
+  const secondHalf = useCases.slice(splitIndex);
 
   useEffect(() => {
     if (!lenis) return;
@@ -66,50 +83,28 @@ export default function UseCasesSection() {
         <Typography variant="h4" align="center" sx={{ my: 4 }}>
           What you can do with it
         </Typography>
-        <Box
+<Box
           sx={{
             display: "flex",
-            gap: 4,
+            flexDirection: isMobile ? "column" : "row",
             justifyContent: "space-between",
-            flexWrap: "wrap",
             maxWidth: 1200,
             mx: "auto",
           }}
         >
-          <List
-            component="ul"
-            sx={{ listStyleType: "disc", pl: 4, flex: "1 1 300px" }}
-          >
-            <ListItem sx={{ display: "list-item" }}>
-              <ListItemText primary="Edit many files at once" />
-            </ListItem>
-            <ListItem sx={{ display: "list-item" }}>
-              <ListItemText primary="Find and fix bugs across a codebase" />
-            </ListItem>
-            <ListItem sx={{ display: "list-item" }}>
-              <ListItemText primary="Include documentation as context" />
-            </ListItem>
-            <ListItem sx={{ display: "list-item" }}>
-              <ListItemText primary="Make large sweeping changes, instantly" />
-            </ListItem>
-          </List>
-          <List
-            component="ul"
-            sx={{ listStyleType: "disc", pl: 4, flex: "1 1 300px" }}
-          >
-            <ListItem sx={{ display: "list-item" }}>
-              <ListItemText primary="Save and use custom prompts" />
-            </ListItem>
-            <ListItem sx={{ display: "list-item" }}>
-              <ListItemText primary="Keep track of the characters in your novel" />
-            </ListItem>
-            <ListItem sx={{ display: "list-item" }}>
-              <ListItemText primary="Analyze large sets of data" />
-            </ListItem>
-            <ListItem sx={{ display: "list-item" }}>
-              <ListItemText primary="Chat with your files without making changes" />
-            </ListItem>
-          </List>
+          {(isMobile ? [useCases] : [firstHalf, secondHalf]).map((group, idx) => (
+            <List
+              component="ul"
+              key={idx}
+              sx={{ listStyleType: "disc", pl: 4, flex: "1 1 300px" }}
+            >
+              {group.map((text, i) => (
+                <ListItem key={i} sx={{ display: "list-item" }}>
+                  <ListItemText primary={text} />
+                </ListItem>
+              ))}
+            </List>
+          ))}
         </Box>
         <Box sx={{ textAlign: "center", mt: 4 }}>
           <Button variant="contained">See how it works</Button>

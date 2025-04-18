@@ -32,28 +32,40 @@ export default function ScreenshotsCarousel() {
         my: 8,
       }}
     >
-      <Box
+<Box
         sx={{
-          position: "relative",
+          overflow: "hidden",
+          width: "100%",
         }}
       >
         <Box
-          component="img"
-          src={images[activeStep]}
-          alt={`Screenshot ${activeStep + 1}`}
-          onClick={() => {
-            setDialogImage(images[activeStep]);
-            setOpen(true);
-          }}
           sx={{
-            cursor: "pointer",
-            width: "100%",
-            height: "auto",
-            objectFit: "contain",
-            display: "block",
-            borderRadius: 2,
+            display: "flex",
+            width: `${maxSteps * 100}%`,
+            transform: `translateX(-${activeStep * (100 / maxSteps)}%)`,
+            transition: "transform 0.5s ease",
           }}
-        />
+        >
+          {images.map((img, idx) => (
+            <Box
+              key={img}
+              component="img"
+              src={img}
+              alt={`Screenshot ${idx + 1}`}
+              onClick={() => {
+                setDialogImage(img);
+                setOpen(true);
+              }}
+              sx={{
+                cursor: "pointer",
+                width: `${100 / maxSteps}%`,
+                height: "auto",
+                objectFit: "contain",
+                borderRadius: 2,
+              }}
+            />
+          ))}
+        </Box>
       </Box>
       <MobileStepper
         steps={maxSteps}
