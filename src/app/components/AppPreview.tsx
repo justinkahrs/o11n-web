@@ -27,18 +27,23 @@ export default function AppPreview({
   return (
     <Box
       sx={{
+        borderRadius: "4px",
+        border: "1px solid lightgrey",
         display: "flex",
         flexDirection: "column",
         maxWidth: 300,
         textAlign: "center",
+        p: 1,
       }}
-    >{showLogo && (
-  <LogoSVG
-    section1Color={primaryColor}
-    section2Color={secondaryColor}
-    height="3rem"
-  />
-)}<Box
+    >
+      {showLogo && (
+        <LogoSVG
+          section1Color={primaryColor}
+          section2Color={secondaryColor}
+          height="3rem"
+        />
+      )}
+      <Box
         sx={{
           mt: 2,
           display: "flex",

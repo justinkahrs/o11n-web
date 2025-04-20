@@ -30,10 +30,10 @@ const AnimatedStep = ({ children, offset }: AnimatedStepProps) => {
     };
   }, [lenis]);
   const factor = animProgress / 0.5; // scales from 0 to 1
-  const xValue = offset * (1 - factor);
+  const yValue = offset * (1 - factor);
   const opacityValue = factor;
   return (
-    <motion.div ref={ref} style={{ x: xValue, opacity: opacityValue }}>
+    <motion.div ref={ref} style={{ y: yValue, opacity: opacityValue }}>
       {children}
     </motion.div>
   );

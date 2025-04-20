@@ -53,15 +53,16 @@ export default function HeroSection() {
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <Typography variant="h3" sx={{ fontWeight: "bold" }}>
+          <Typography variant="h3" sx={{ fontWeight: "bold", mb: 2 }}>
             Orchestrate your code. <br />
-            Customize the theme. <br />
             Just vibe.
           </Typography>
           <Typography variant="subtitle1" sx={{ maxWidth: "700px" }}>
-            Never again worry about crafting the perfect prompt. You talk to
-            your files while o11n handles talking to AI, so you can stay in the
-            flow.
+            The perfect prompt doesn&apos;t exi-- it does, o11n made it for you.
+            <Box component="br" sx={{ display: "block" }} />
+            Tell o11n what you need and just chill while it talks nerdy to AI.
+            <br /> No API keys. No login. <br />
+            No subscription.
           </Typography>
           <Stack
             direction={{ xs: "column", sm: "row" }}

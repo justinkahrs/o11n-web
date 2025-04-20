@@ -2,6 +2,7 @@
 import React from "react";
 import { Box, Typography, Stack, Link, useTheme } from "@mui/material";
 import InstaIcon from "@mui/icons-material/Instagram";
+import YouTubeIcon from "@mui/icons-material/YouTube";
 import { motion } from "framer-motion";
 
 export default function Footer() {
@@ -32,6 +33,19 @@ export default function Footer() {
           >
             <InstaIcon sx={{ mr: 1 }} />
             Instagram
+          </Link>
+          <Link
+            href="https://www.instagram.com/o11n.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              color: theme.palette.text.primary,
+            }}
+          >
+            <YouTubeIcon sx={{ mr: 1 }} />
+            YouTube
           </Link>
         </Stack>
         <Typography variant="body2" align="center" sx={{ color: "#aaa" }}>

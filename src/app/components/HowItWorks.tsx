@@ -7,20 +7,21 @@ import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
 import AnimatedStep from "./AnimatedStep";
 const steps = [
   {
-    title: "Pick a project/file",
+    title: "Load your project files",
     description:
-      "Choose any directory or a single text-based file to get started.",
+      "Choose a bunch of files or just one text-based file to get started. This will give the AI the proper context without having to constantly copy paste multiple (changing) files into your AI.",
     icon: <FolderOpenIcon sx={{ fontSize: "3rem", mb: 2 }} />,
   },
   {
     title: "Shoot your shot",
     description:
-      "Just say what you want to do, like “Add a shopping cart to my app” or “Use the webcam to show my video”, and o11n will take it from there.",
+      "Just say what you want to do, like “Add a shopping cart to my app” or “Put an interactive map on my website”, click copy and send it to your preferred (reasoning) AI model.",
     icon: <ChatBubbleOutlineIcon sx={{ fontSize: "3rem", mb: 2 }} />,
   },
   {
     title: "o11n makes the change",
-    description: "We basically just full send it, so you can keep vibing.",
+    description:
+      "We take the AI's response and act upon your project files (with approval, of course) instantly. o11n will even create new files when necessary. Wash, rinse, repeat. Now you got a stew goin.",
     icon: <AutoFixHighIcon sx={{ fontSize: "3rem", mb: 2 }} />,
   },
 ];
@@ -30,17 +31,16 @@ export default function HowItWorks() {
       sx={{
         py: 4,
         my: 20,
-        position: "relative",
-        overflow: "hidden",
+        // position: "relative",
       }}
     >
-      <Typography variant="h4" align="center" sx={{ mb: 4 }}>
+      <Typography variant="h4" align="center">
         How It Works
       </Typography>
       <Grid container spacing={8} justifyContent="center">
-        {steps.map((step, index) => (
+        {steps.map((step) => (
           <Grid key={step.title} sx={{ textAlign: "center", p: 4 }}>
-            <AnimatedStep offset={index % 2 === 0 ? -100 : 100}>
+            <AnimatedStep offset={100}>
               {step.icon}
               <Typography variant="h6" sx={{ fontWeight: "bold" }}>
                 {step.title}

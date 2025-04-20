@@ -13,19 +13,19 @@ import {
 import { LenisContext } from "../Providers";
 
 export default function UseCasesSection() {
-const lenis = useContext(LenisContext);
+  const lenis = useContext(LenisContext);
   const [transformStyle, setTransformStyle] = useState({});
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const useCases = [
     "Edit many files at once",
     "Find and fix bugs across a codebase",
     "Include documentation as context",
     "Make large sweeping changes, instantly",
     "Save and use custom prompts",
-    "Keep track of the characters in your novel",
     "Analyze large sets of data",
-    "Chat with your files without making changes",
+    "Keep track of the characters in your novel",
+    "Chat with files and find their secrets",
   ];
   const splitIndex = Math.ceil(useCases.length / 2);
   const firstHalf = useCases.slice(0, splitIndex);
@@ -64,7 +64,7 @@ const lenis = useContext(LenisContext);
           px: 4,
           mx: 2,
           backgroundColor: "#f5f5f5",
-          borderRadius: 20,
+          borderRadius: 2,
           color: "black",
         }}
       >
@@ -76,14 +76,16 @@ const lenis = useContext(LenisContext);
           align="left"
           sx={{ mb: 4, maxWidth: 600, mx: "auto" }}
         >
-          o11n was made for non-coders, baby devs, creative weirdos, senior devs
-          in loveless relationships with their current tools, or anyone who just
-          wants to build things without friction.
+          o11n was made for non-coders, baby devs, kids who climb on rocks.
+          Creative weirdos, senior devs in loveless relationships with their
+          current tools, and really anyone who just wants to build things
+          without friction. o11n breaks down the barriers that stop us from
+          building software for ourselves.
         </Typography>
         <Typography variant="h4" align="center" sx={{ my: 4 }}>
           What you can do with it
         </Typography>
-<Box
+        <Box
           sx={{
             display: "flex",
             flexDirection: isMobile ? "column" : "row",
@@ -92,19 +94,21 @@ const lenis = useContext(LenisContext);
             mx: "auto",
           }}
         >
-          {(isMobile ? [useCases] : [firstHalf, secondHalf]).map((group, idx) => (
-            <List
-              component="ul"
-              key={idx}
-              sx={{ listStyleType: "disc", pl: 4, flex: "1 1 300px" }}
-            >
-              {group.map((text, i) => (
-                <ListItem key={i} sx={{ display: "list-item" }}>
-                  <ListItemText primary={text} />
-                </ListItem>
-              ))}
-            </List>
-          ))}
+          {(isMobile ? [useCases] : [firstHalf, secondHalf]).map(
+            (group, idx) => (
+              <List
+component="ul" dense
+                key={idx}
+                sx={{ listStyleType: "disc", pl: 4, flex: "1 1 300px" }}
+              >
+                {group.map((text, i) => (
+                  <ListItem key={i} sx={{ display: "list-item" }}>
+                    <ListItemText primary={text} />
+                  </ListItem>
+                ))}
+              </List>
+            )
+          )}
         </Box>
         <Box sx={{ textAlign: "center", mt: 4 }}>
           <Button variant="contained">See how it works</Button>

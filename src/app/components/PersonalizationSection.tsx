@@ -53,7 +53,7 @@ export default function PersonalizationSection() {
     >
       <Box sx={{ py: 8, my: 20 }}>
         <Typography variant="h4" align="center" sx={{ mb: 4 }}>
-          Make it ugly if you want
+          Match your vibe
         </Typography>
         <Typography
           variant="body1"
@@ -61,7 +61,7 @@ export default function PersonalizationSection() {
           sx={{ mb: 4, maxWidth: 600, mx: "auto" }}
         >
           Make o11n your own. Choose whatever theme is gonna help you get stuff
-          done.
+          done, or mess around.
         </Typography>
         <Box
           sx={{
@@ -89,14 +89,16 @@ export default function PersonalizationSection() {
           </Box>
           <Box
             sx={{
+              borderRadius: "4px",
+              border: "1px solid lightgrey",
               width: 300,
               textAlign: "center",
               mx: "auto",
-              order: { xs: 1, sm: 2 },
+              p: 1,
             }}
           >
             <Typography variant="h6" sx={{ mb: 2 }}>
-              Give it a try
+              Try changing a color
             </Typography>
             <Box
               sx={{
@@ -109,7 +111,7 @@ export default function PersonalizationSection() {
             >
               <Box sx={{ textAlign: "center" }}>
                 <Typography variant="body2" sx={{ mb: 1 }}>
-                  Change Primary
+                  Primary
                 </Typography>
                 <Box
                   sx={{
@@ -148,7 +150,7 @@ export default function PersonalizationSection() {
               </Box>
               <Box sx={{ textAlign: "center" }}>
                 <Typography variant="body2" sx={{ mb: 1 }}>
-                  Change Secondary
+                  Secondary
                 </Typography>
                 <Box
                   sx={{
@@ -186,7 +188,15 @@ export default function PersonalizationSection() {
                 </Menu>
               </Box>
             </Box>
-            <Box sx={{ mt: 2, textAlign: "center" }}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: " center",
+                mt: 2,
+                textAlign: "center",
+              }}
+            >
               <FormControlLabel
                 control={
                   <Switch
@@ -218,7 +228,7 @@ export default function PersonalizationSection() {
             </Box>
             <Button
               startIcon={<Shuffle />}
-              variant="outlined"
+              variant="contained"
               onClick={randomizeColors}
               sx={{ mt: 2 }}
             >
@@ -228,7 +238,7 @@ export default function PersonalizationSection() {
               startIcon={<Replay />}
               variant="outlined"
               onClick={resetDefaults}
-              sx={{ mt: 1 }}
+              sx={{ m: 1 }}
             >
               Reset Default
             </Button>
