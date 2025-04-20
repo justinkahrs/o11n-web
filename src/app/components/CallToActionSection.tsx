@@ -47,7 +47,7 @@ export default function CallToActionSection() {
             * personal use only. <br />
             Enterprise licenses available,{" "}
             <a
-              href="mailto:justin@justinkahrs.com?subject=Enterprise%20licensing%20for%20o11n"
+              href="https://www.justinkahrs.com/contact"
               style={{ borderBottom: ".5px solid" }}
             >
               contact

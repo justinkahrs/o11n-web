@@ -52,6 +52,16 @@ export default function Footer() {
           o11n is short for orchestration. <br /> It&apos;s pronounced
           &quot;o11n&quot;.
         </Typography>
+        <Typography variant="body2" align="center" sx={{ color: "#aaa" }}>
+          Made with love and a little bit of rage by{" "}
+          <a
+            href="https://www.justinkahrs.com"
+            style={{ borderBottom: ".5px solid" }}
+          >
+            Justin Kahrs
+          </a>
+          .
+        </Typography>
       </Box>
     </motion.div>
   );
