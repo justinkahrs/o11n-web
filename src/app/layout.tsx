@@ -10,13 +10,14 @@ const jetbrains = JetBrains_Mono({
   variable: "--font-jetbrains",
 });
 
-export const metadata = {
-  title: "o11n – AI orchestration without the headache",
+export const metadata: Metadata = {
+  title: "o11n – Making your ideas actionable",
   description:
-    "Talk to your codebase, automate sweeping changes, and integrate AI with real context—no login, no API keys, no BS.",
+    "Talk to your codebase, create new features and edit existing ones without even opening a file—no login, no API keys, no subscription.",
   keywords: [
     "AI coding",
     "developer automation",
+    "code generation",
     "codebase editing",
     "prompt engineering",
     "LLM workflows",
@@ -25,9 +26,9 @@ export const metadata = {
   ],
   metadataBase: new URL("https://o11n.life"),
   openGraph: {
-    title: "o11n – AI orchestration without the headache",
+    title: "o11n – Making your ideas actionable",
     description:
-      "o11n lets you edit many files at once, document your work, and command the AI with context—like talking to a dev intern that listens.",
+      "Talk to your codebase, create new features and edit existing ones without even opening a file—no login, no API keys, no subscription.",
     url: "https://o11n.life",
     type: "website",
     siteName: "o11n",
@@ -36,29 +37,29 @@ export const metadata = {
         url: "/1200x675.png",
         width: 1200,
         height: 675,
-        alt: "o11n – AI orchestration screenshot",
+        alt: "o11n",
       },
       {
         url: "/1200x1200.png",
         width: 1200,
         height: 1200,
-        alt: "o11n square preview",
+        alt: "o11n",
       },
       {
         url: "/600x315.png",
         width: 600,
         height: 315,
-        alt: "o11n small preview",
+        alt: "o11n",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    site: "@o11napp",
-    creator: "@o11napp",
-    title: "o11n – AI orchestration without the headache",
+    site: "@o11n_app",
+    creator: "@o11n_app",
+    title: "o11n – Making your ideas actionable",
     description:
-      "Say what you want to do. Select the files. o11n gives the AI the context to actually do it.",
+      "Talk to your codebase, create new features and edit existing ones without even opening a file—no login, no API keys, no subscription.",
     images: ["/1200x675.png"],
   },
   icons: {
