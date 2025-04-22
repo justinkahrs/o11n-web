@@ -35,7 +35,7 @@ export default function Footer() {
             Instagram
           </Link>
           <Link
-            href="https://www.instagram.com/o11n.app/"
+            href="https://www.youtube.com/channel/UCEvuzLf_GX_6Wjvm07XWyug"
             target="_blank"
             rel="noopener noreferrer"
             sx={{
@@ -53,7 +53,7 @@ export default function Footer() {
           &quot;o11n&quot;.
         </Typography>
         <Typography variant="body2" align="center" sx={{ color: "#aaa" }}>
-          Made with love and a little bit of rage by{" "}
+          Made with love and just the right amount of rage by{" "}
           <a
             href="https://www.justinkahrs.com"
             style={{ borderBottom: ".5px solid" }}
