@@ -10,7 +10,12 @@ import {
   CardContent,
   Typography,
 } from "@mui/material";
-import { Folder, FolderSpecial, InsertDriveFile } from "@mui/icons-material";
+import {
+  ContentCopy,
+  Folder,
+  FolderSpecial,
+  InsertDriveFile,
+} from "@mui/icons-material";
 import LogoSVG from "./LogoSVG";
 type AppPreviewProps = {
   primaryColor: string;
@@ -57,7 +62,7 @@ export default function AppPreview({
         <Button startIcon={<InsertDriveFile />} variant="outlined" size="small">
           Load File
         </Button>
-        <TextField placeholder="Sample input" size="small" fullWidth />
+        <TextField placeholder="Add a Contact page" size="small" fullWidth />
       </Box>
       <Box sx={{ mt: 2, minHeight: "300px" }}>
         <Card variant="outlined" sx={{ mt: 1 }}>
@@ -100,7 +105,7 @@ export default function AppPreview({
                       >
                         <InsertDriveFile color="action" sx={{ mr: 1 }} />
                         <Typography variant="subtitle2">
-                          document.txt
+                          package.json
                         </Typography>
                       </Box>
                       <Typography
@@ -108,14 +113,14 @@ export default function AppPreview({
                         component="div"
                         align="left"
                       >
-                        1.2 KB (74%)
+                        800 B (26%)
                       </Typography>
                       <Typography
                         variant="caption"
                         component="div"
                         align="left"
                       >
-                        350 tokens
+                        120 tokens
                       </Typography>
                     </Box>
                     <Box
@@ -130,7 +135,7 @@ export default function AppPreview({
                       >
                         <InsertDriveFile color="action" sx={{ mr: 1 }} />
                         <Typography align="left" variant="subtitle2">
-                          someOtherDocument.csv
+                          HomePage.tsx
                         </Typography>
                       </Box>
                       <Typography
@@ -138,14 +143,14 @@ export default function AppPreview({
                         variant="caption"
                         component="div"
                       >
-                        800 B (26%)
+                        1.2 KB (74%)
                       </Typography>
                       <Typography
                         align="left"
                         variant="caption"
                         component="div"
                       >
-                        120 tokens
+                        350 tokens
                       </Typography>
                     </Box>
                   </Box>
@@ -154,6 +159,14 @@ export default function AppPreview({
             )}
           </AnimatePresence>
         </Card>
+        <Button
+          variant="contained"
+          startIcon={<ContentCopy />}
+          fullWidth
+          sx={{ mt: 1 }}
+        >
+          Copy Prompt (~1k tokens)
+        </Button>
       </Box>
     </Box>
   );

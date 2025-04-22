@@ -3,8 +3,8 @@ import React from "react";
 import { Box, Typography, Stack, Link, useTheme } from "@mui/material";
 import InstaIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import DiscordIcon from "./DiscordIcon";
 import { motion } from "framer-motion";
-
 export default function Footer() {
   const theme = useTheme();
   return (
@@ -22,19 +22,6 @@ export default function Footer() {
           sx={{ mb: 2 }}
         >
           <Link
-            href="https://www.instagram.com/o11n.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              color: theme.palette.text.primary,
-            }}
-          >
-            <InstaIcon sx={{ mr: 1 }} />
-            Instagram
-          </Link>
-          <Link
             href="https://www.youtube.com/channel/UCEvuzLf_GX_6Wjvm07XWyug"
             target="_blank"
             rel="noopener noreferrer"
@@ -47,18 +34,45 @@ export default function Footer() {
             <YouTubeIcon sx={{ mr: 1 }} />
             YouTube
           </Link>
+          <Link
+            href="https://discord.gg/Rz2BNXa68w"
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              color: theme.palette.text.primary,
+            }}
+          >
+            <DiscordIcon sx={{ mr: 1 }} />
+            Discord
+          </Link>
+          <Link
+            href="https://www.instagram.com/o11n.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              color: theme.palette.text.primary,
+            }}
+          >
+            <InstaIcon sx={{ mr: 1 }} />
+            Instagram
+          </Link>
         </Stack>
         <Typography variant="body2" align="center" sx={{ color: "#aaa" }}>
           o11n is short for orchestration. <br /> It&apos;s pronounced
           &quot;o11n&quot;.
         </Typography>
         <Typography variant="body2" align="center" sx={{ color: "#aaa" }}>
-          Made with love and just the right amount of rage by{" "}
+          Made with love and just the right amount of rage by
+          <br />
           <a
-            href="https://www.justinkahrs.com"
+            href="https://www.senna-automation.com"
             style={{ borderBottom: ".5px solid" }}
           >
-            Justin Kahrs
+            Senna Automation
           </a>
           .
         </Typography>
