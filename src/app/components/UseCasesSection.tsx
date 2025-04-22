@@ -7,16 +7,18 @@ import {
   ListItem,
   ListItemText,
   Button,
-  useTheme,
   useMediaQuery,
 } from "@mui/material";
-import { LenisContext } from "../Providers";
+import { LenisContext, ThemeContext } from "../Providers";
 
 export default function UseCasesSection() {
+  const [bg, setBg] = useState("#000");
+  const [text, setText] = useState("#FFF");
+  const themeCtx = useContext(ThemeContext);
   const lenis = useContext(LenisContext);
   const [transformStyle, setTransformStyle] = useState({});
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(themeCtx?.theme.breakpoints.down("sm") || "");
+  // const isDarkMode = theme.palette.mode === "dark";
   const useCases = [
     "Edit many files at once",
     "Find and fix bugs across a codebase",
@@ -56,6 +58,12 @@ export default function UseCasesSection() {
     };
   }, [lenis]);
 
+  useEffect(() => {
+    const isDarkMode = themeCtx?.theme.palette.mode === "dark";
+    setBg(isDarkMode ? "#fff" : "#000");
+    setText(isDarkMode ? "#000" : "#fff");
+  }, [themeCtx?.theme]);
+
   return (
     <div style={transformStyle}>
       <Box
@@ -63,9 +71,9 @@ export default function UseCasesSection() {
           py: 8,
           px: 4,
           mx: 2,
-          backgroundColor: "#f5f5f5",
+          backgroundColor: bg,
           borderRadius: 2,
-          color: "black",
+          color: text,
         }}
       >
         <Typography variant="h4" align="center" sx={{ mb: 4 }}>
@@ -97,7 +105,8 @@ export default function UseCasesSection() {
           {(isMobile ? [useCases] : [firstHalf, secondHalf]).map(
             (group, idx) => (
               <List
-component="ul" dense
+                component="ul"
+                dense
                 key={idx}
                 sx={{ listStyleType: "disc", pl: 4, flex: "1 1 300px" }}
               >

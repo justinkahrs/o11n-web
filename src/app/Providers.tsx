@@ -2,12 +2,13 @@
 import type React from "react";
 import { useEffect, createContext, useState } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { CssBaseline } from "@mui/material";
+import { CssBaseline, type Theme } from "@mui/material";
 import theme from "../theme";
 import Lenis from "lenis";
 
 export const LenisContext = createContext<Lenis | null>(null);
 export const ThemeContext = createContext<{
+  theme: Theme;
   onThemeChange: (
     primary: string,
     secondary: string,
@@ -52,7 +53,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 
   return (
     <LenisContext.Provider value={lenisInstance}>
-      <ThemeContext.Provider value={{ onThemeChange }}>
+      <ThemeContext.Provider value={{ theme: currentTheme, onThemeChange }}>
         <ThemeProvider theme={currentTheme}>
           <CssBaseline />
           {children}

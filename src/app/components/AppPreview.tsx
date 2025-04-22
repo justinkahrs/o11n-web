@@ -1,6 +1,6 @@
 "use client";
 import type React from "react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Box,
@@ -9,6 +9,7 @@ import {
   Card,
   CardContent,
   Typography,
+  useTheme,
 } from "@mui/material";
 import {
   ContentCopy,
@@ -29,6 +30,8 @@ export default function AppPreview({
   showLogo,
 }: AppPreviewProps) {
   const [expanded, setExpanded] = useState(true);
+  const theme = useTheme();
+  const isDarkMode = theme.palette.mode === "dark";
   return (
     <Box
       sx={{
@@ -84,7 +87,9 @@ export default function AppPreview({
                 exit={{ height: 0, opacity: 0 }}
                 style={{ overflow: "hidden" }}
               >
-                <CardContent>
+                <CardContent
+                  sx={{ backgroundColor: isDarkMode ? "#000" : "#fff" }}
+                >
                   <Box
                     sx={{
                       mt: 2,
