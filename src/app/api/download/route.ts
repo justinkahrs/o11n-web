@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { stripe } from "../../../../lib/stripe";
+import { ListObjectsV2Command } from "@aws-sdk/client-s3";
 const s3Client = new S3Client({
   region: process.env.AWS_REGION,
   credentials: {
@@ -11,6 +12,34 @@ const s3Client = new S3Client({
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
   },
 });
+async function getLatestKey(prefix: string) {
+  const command = new ListObjectsV2Command({
+    // biome-ignore lint/style/noNonNullAssertion: <explanation>
+    Bucket: process.env.AWS_S3_BUCKET!,
+    Prefix: prefix,
+  });
+  const data = await s3Client.send(command);
+  if (!data.Contents || data.Contents.length === 0) {
+    throw new Error(`No objects found for prefix ${prefix}`);
+  }
+  const filteredContents = data.Contents.filter(
+    (item) => item.Key !== undefined && /\.(dmg|exe)$/.test(item.Key)
+  );
+  if (filteredContents.length === 0) {
+    throw new Error(`No .dmg or .exe objects found for prefix ${prefix}`);
+  }
+  const latest = filteredContents.reduce((prev, curr) => {
+    if (
+      !prev.LastModified ||
+      (curr.LastModified && curr.LastModified > prev.LastModified)
+    ) {
+      return curr;
+    }
+    return prev;
+  });
+  // biome-ignore lint/style/noNonNullAssertion: <explanation>
+  return latest.Key!;
+}
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
@@ -24,10 +53,10 @@ export async function GET(request: Request) {
     }
     // biome-ignore lint/style/noNonNullAssertion: <explanation>
     const bucket = process.env.AWS_S3_BUCKET!;
-    const keyDmg =
-      "bundles/o11n-macos-latest-bundle/dmg/o11n_1.0.115_aarch64.dmg";
-    const keyExe =
-      "bundles/o11n-windows-latest-bundle/nsis/o11n_1.0.115_x64-setup.exe";
+    const prefixDmg = "bundles/o11n-macos-latest-bundle/dmg/";
+    const prefixExe = "bundles/o11n-windows-latest-bundle/nsis/";
+    const keyDmg = await getLatestKey(prefixDmg);
+    const keyExe = await getLatestKey(prefixExe);
     const dmgCommand = new GetObjectCommand({ Bucket: bucket, Key: keyDmg });
     const exeCommand = new GetObjectCommand({ Bucket: bucket, Key: keyExe });
     const urlDmg = await getSignedUrl(s3Client, dmgCommand, { expiresIn: 300 });
