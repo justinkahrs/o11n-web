@@ -1,10 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { Box, Typography, Button, Stack } from "@mui/material";
+import { Box, Typography, Button, Stack, Link } from "@mui/material";
 import { motion } from "framer-motion";
 import LogoSVG from "../components/LogoSVG";
-import { Apple, Microsoft } from "@mui/icons-material";
+import { Apple, Microsoft, ShoppingCart } from "@mui/icons-material";
 type Links = {
   dmg: string;
   exe: string;
@@ -13,7 +13,9 @@ export default function DownloadClient() {
   const searchParams = useSearchParams();
   const sessionId = searchParams.get("session_id");
   const [links, setLinks] = useState<Links | null>(null);
-  const [error, setError] = useState<string>("");
+  const [error, setError] = useState<string>(
+    "You must complete a purchase before downloading the app."
+  );
   useEffect(() => {
     if (!sessionId) {
       setError("No session ID provided. Please complete your purchase first.");
@@ -28,7 +30,7 @@ export default function DownloadClient() {
         const data: Links = await res.json();
         setLinks(data);
       } catch (e) {
-        console.error(e);
+        console.log(e);
         setError("You must complete a purchase before downloading the app.");
       }
     })();
@@ -39,15 +41,25 @@ export default function DownloadClient() {
         sx={{
           minHeight: "100vh",
           display: "flex",
+          flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
           textAlign: "center",
           mx: 2,
         }}
       >
-        <Typography variant="h6" color="error">
+        <Typography variant="h6" color="error" sx={{ mb: 2 }}>
           {error}
         </Typography>
+        <Button
+          component={Link}
+          startIcon={<ShoppingCart />}
+          variant="contained"
+          color="primary"
+          href="/purchase"
+        >
+          Purchase now
+        </Button>
       </Box>
     );
   }
