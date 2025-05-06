@@ -77,6 +77,15 @@ export default function Footer() {
           .
         </Typography>
       </Box>
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <iframe
+          title="Climate pledge badge"
+          width="380"
+          height="38"
+          style={{ border: 0, textAlign: "center", marginBottom: "20px" }}
+          src="https://climate.stripe.com/badge/g5ZB50?theme=light&size=small&locale=en-US"
+        />
+      </Box>
     </motion.div>
   );
 }

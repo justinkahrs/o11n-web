@@ -2,8 +2,10 @@
 import type React from "react";
 import { Box, Typography, Button, Stack } from "@mui/material";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export default function CallToActionSection() {
+  const router = useRouter();
   return (
     <motion.div
       initial={{ y: 80, opacity: 0 }}
@@ -21,7 +23,7 @@ export default function CallToActionSection() {
         }}
       >
         <Typography variant="h4" sx={{ mb: 2 }}>
-          Same price as a video game
+          On sale for less than a video game
         </Typography>
         <Box sx={{ p: { xs: 2, sm: 4, md: 8 } }}>
           <Stack spacing={2}>
@@ -29,7 +31,11 @@ export default function CallToActionSection() {
               One time fee, use it forever.
               <sup style={{ fontSize: ".5rem" }}>*</sup>
             </Typography>
-            <Button variant="contained" color="primary">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => router.push("/purchase")}
+            >
               Buy now{" "}
               <span
                 style={{
@@ -38,9 +44,9 @@ export default function CallToActionSection() {
                   marginRight: "0.5em",
                 }}
               >
-                $99
+                $129
               </span>{" "}
-              $69
+              $79
             </Button>
           </Stack>
           <Typography variant="subtitle2" sx={{ mt: 2, fontSize: ".5rem" }}>
