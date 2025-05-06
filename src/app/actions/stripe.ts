@@ -4,7 +4,7 @@ import { headers } from "next/headers";
 
 import { stripe } from "../../../lib/stripe";
 
-export async function fetchClientSecret() {
+export async function fetchClientSecret(): Promise<string> {
   const origin = (await headers()).get("origin");
 
   const session = await stripe.checkout.sessions.create({
@@ -23,5 +23,9 @@ export async function fetchClientSecret() {
     automatic_tax: { enabled: true },
   });
 
-  return session.client_secret;
+  const secret = session.client_secret;
+  if (!secret) {
+    throw new Error("No client secret returned");
+  }
+  return secret;
 }
