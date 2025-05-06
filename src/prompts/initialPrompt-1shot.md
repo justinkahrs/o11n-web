@@ -600,14 +600,15 @@ Remove an obsolete file.
 8. **Important:** Do not wrap any XML output in CDATA tags (i.e. `<![CDATA[ ... ]]>`). Repo Prompt expects raw XML exactly as shown in the examples.
 9. **IMPORTANT** IF MAKING FILE CHANGES, YOU MUST USE THE AVAILABLE XML FORMATTING CAPABILITIES PROVIDED ABOVE - IT IS THE ONLY WAY FOR YOUR CHANGES TO BE APPLIED.
 10. The final output must apply cleanly with no leftover syntax errors.
-    </xml_formatting_instructions><user_instructions>
+    </xml_formatting_instructions>
+    <user_instructions>
     You’re building a modern landing page for a Gen Z-focused dev tool called o11n, using React, Next.js, and Material UI (MUI v5). The page should reflect a clean, slightly glitchy vibe-coding aesthetic, match the attached design screenshot style/layout (but not copy), and be fully mobile-responsive.
 
 Use MUI components wherever possible and keep structure modular with clear, named functional components. You may reference MUI’s Box, Stack, Typography, Button, Grid, Container, and styling hooks like useTheme and sx for inline styles.
 
 Overall Layout
 • Wrap the page in a responsive <Container maxWidth="xl">
-• Use MUI ThemeProvider with dark mode
+• Use MUI ThemeProvider with dark mode, create a separate Providers file
 • Implement smooth scroll behavior and modern spacing
 
 ⸻
@@ -677,9 +678,8 @@ Component Structure
 ⸻
 
 7. <Footer />
-   •	Dark footer with light or muted text
-   •	Horizontal Stack or Grid with:
-   •	Links to Twitter, Discord, GitHub (can use icons from @mui/icons-material)
-   •	Small caption: “o11n is short for orchestration. But we’re vibing.”
-
-</user_instructions>
+      •	Dark footer with light or muted text
+      •	Horizontal Stack or Grid with:
+      •	Links to Twitter and GitHub (can use icons from @mui/icons-material)
+      •	Small caption: “o11n is short for orchestration. But we’re vibing.”
+   </user_instructions>
