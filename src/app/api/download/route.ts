@@ -67,3 +67,38 @@ export async function GET(request: Request) {
     return new NextResponse("Internal server error", { status: 500 });
   }
 }
+export async function POST(request: Request) {
+  try {
+    const { email } = await request.json();
+    if (!email) {
+      return new NextResponse("Email is required", { status: 400 });
+    }
+    const customers = await stripe.customers.list({ email });
+    if (!customers.data || customers.data.length === 0) {
+      return new NextResponse("Customer not found", { status: 404 });
+    }
+    const customerId = customers.data[0].id;
+    const sessions = await stripe.checkout.sessions.list({
+      customer: customerId,
+      limit: 1,
+    });
+    if (!sessions.data || sessions.data.length === 0) {
+      return new NextResponse("No completed sessions found", { status: 404 });
+    }
+    const sessionId = sessions.data[0].id;
+    const customerEmail =
+      sessions.data[0].customer_details?.email ||
+      sessions.data[0].customer_email;
+
+    // biome-ignore lint/style/noNonNullAssertion: <explanation>
+    await fetch(process.env.GOOGLE_APPS_SCRIPT_URL!, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ sessionId, email: customerEmail }),
+    });
+    return NextResponse.json({ customerEmail });
+  } catch (error) {
+    console.error("Error in POST /api/download:", error);
+    return new NextResponse("Internal server error", { status: 500 });
+  }
+}

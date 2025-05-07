@@ -1,10 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
-import { Box, Typography, Button, Stack, Link } from "@mui/material";
+import { useSearchParams, useRouter } from "next/navigation";
+import { Box, Typography, Button, Stack, Link, TextField } from "@mui/material";
 import { motion } from "framer-motion";
 import LogoSVG from "../components/LogoSVG";
-import { Apple, Microsoft, ShoppingCart } from "@mui/icons-material";
+import { Apple, Check, Microsoft, ShoppingCart } from "@mui/icons-material";
 type Links = {
   dmg: string;
   exe: string;
@@ -12,12 +12,16 @@ type Links = {
 export default function DownloadClient() {
   const searchParams = useSearchParams();
   const sessionId = searchParams.get("session_id");
+  const router = useRouter();
   const [links, setLinks] = useState<Links | null>(null);
   const [error, setError] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [lookupError, setLookupError] = useState<string>("");
+  const [lookupSuccess, setLookupSuccess] = useState<string>("");
+  const [isLookupLoading, setIsLookupLoading] = useState<boolean>(false);
   const [hasDownloaded, setHasDownloaded] = useState<boolean>(false);
   useEffect(() => {
     if (!sessionId) {
-      setError("No session ID provided. Please complete your purchase first.");
       return;
     }
     (async () => {
@@ -34,6 +38,71 @@ export default function DownloadClient() {
       }
     })();
   }, [sessionId]);
+  if (!sessionId) {
+    return (
+      <Box
+        sx={{
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          textAlign: "center",
+          mx: 2,
+        }}
+      >
+        <Typography variant="h6" sx={{ mb: 2 }}>
+          Enter the email used for purchase to retrieve download links
+        </Typography>
+        <TextField
+          type="email"
+          label="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          sx={{ mb: 2 }}
+        />
+        {lookupError && (
+          <Typography variant="body2" color="error" sx={{ mb: 2 }}>
+            {lookupError}
+          </Typography>
+        )}
+        {lookupSuccess && (
+          <Typography variant="body2" sx={{ color: "success.main", mb: 2 }}>
+            {lookupSuccess}
+          </Typography>
+        )}
+        <Button
+          startIcon={<Check />}
+          variant="contained"
+          onClick={async () => {
+            setIsLookupLoading(true);
+            try {
+              const res = await fetch("/api/download", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email }),
+              });
+              if (!res.ok) {
+                throw new Error("Lookup failed");
+              }
+              setLookupSuccess(
+                "Thanks, we have sent a new download link to your email"
+              );
+              setLookupError("");
+            } catch {
+              setLookupError("Could not find purchase for this email");
+              setLookupSuccess("");
+            } finally {
+              setIsLookupLoading(false);
+            }
+          }}
+          disabled={isLookupLoading || !email}
+        >
+          {isLookupLoading ? "Verifying..." : "Verify purchase"}
+        </Button>
+      </Box>
+    );
+  }
   if (error) {
     return (
       <Box
