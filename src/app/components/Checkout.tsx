@@ -5,17 +5,22 @@ import {
   EmbeddedCheckoutProvider,
 } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-
-import { fetchClientSecret } from "../actions/stripe";
+import { useCallback } from "react";
 import { useRouter } from "next/navigation";
-
-const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || ""
-);
 
 export default function Checkout() {
   const router = useRouter();
 
+  const getStripePromise = useCallback(
+    () => loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || ""),
+    []
+  );
+  const stripePromise = getStripePromise();
+  const fetchClientSecret = useCallback(async () => {
+    const res = await fetch("/api/create-checkout-session", { method: "POST" });
+    const data = await res.json();
+    return data.clientSecret;
+  }, []);
   return (
     <div id="checkout">
       <EmbeddedCheckoutProvider
