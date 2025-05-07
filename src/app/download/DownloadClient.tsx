@@ -14,6 +14,7 @@ export default function DownloadClient() {
   const sessionId = searchParams.get("session_id");
   const [links, setLinks] = useState<Links | null>(null);
   const [error, setError] = useState<string>("");
+  const [hasDownloaded, setHasDownloaded] = useState<boolean>(false);
   useEffect(() => {
     if (!sessionId) {
       setError("No session ID provided. Please complete your purchase first.");
@@ -96,9 +97,17 @@ export default function DownloadClient() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
-        <Box sx={{ mb: 2 }}>
-          <LogoSVG width="100%" height="auto" />
-        </Box>
+        {hasDownloaded ? (
+          <Link href="/">
+            <Box sx={{ mb: 2 }}>
+              <LogoSVG width="100%" height="auto" />
+            </Box>
+          </Link>
+        ) : (
+          <Box sx={{ mb: 2 }}>
+            <LogoSVG width="100%" height="auto" />
+          </Box>
+        )}
       </motion.div>
       <motion.div
         initial={{ y: 100, opacity: 0 }}
@@ -115,6 +124,7 @@ export default function DownloadClient() {
               href={links.dmg}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => setHasDownloaded(true)}
             >
               Download for mac
             </Button>
@@ -126,6 +136,7 @@ export default function DownloadClient() {
               href={links.exe}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => setHasDownloaded(true)}
             >
               Download for Windows
             </Button>
