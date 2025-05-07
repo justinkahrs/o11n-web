@@ -24,12 +24,6 @@ export const metadata: Metadata = {
     siteName: "o11n",
     images: [
       {
-        url: "/1200x675.png",
-        width: 1200,
-        height: 675,
-        alt: "o11n",
-      },
-      {
         url: "/1200x1200.png",
         width: 1200,
         height: 1200,

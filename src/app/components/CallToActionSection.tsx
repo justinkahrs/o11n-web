@@ -53,7 +53,7 @@ export default function CallToActionSection() {
             * personal use only. <br />
             Enterprise licenses available,{" "}
             <a
-              href="https://www.justinkahrs.com/contact"
+              href="https://www.senna-automation.com/contact"
               style={{ borderBottom: ".5px solid" }}
             >
               contact
