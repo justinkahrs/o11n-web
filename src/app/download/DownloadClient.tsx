@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { Box, Typography, Button, Stack, Link, TextField } from "@mui/material";
 import { motion } from "framer-motion";
 import LogoSVG from "../components/LogoSVG";
@@ -12,7 +12,6 @@ type Links = {
 export default function DownloadClient() {
   const searchParams = useSearchParams();
   const sessionId = searchParams.get("session_id");
-  const router = useRouter();
   const [links, setLinks] = useState<Links | null>(null);
   const [error, setError] = useState<string>("");
   const [email, setEmail] = useState<string>("");
