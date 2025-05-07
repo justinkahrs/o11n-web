@@ -13,6 +13,7 @@ export async function POST(req: Request) {
     ],
     mode: "payment",
     ui_mode: "embedded",
+    allow_promotion_codes: true,
     return_url: `${origin}/download?session_id={CHECKOUT_SESSION_ID}`,
     automatic_tax: { enabled: true },
   });

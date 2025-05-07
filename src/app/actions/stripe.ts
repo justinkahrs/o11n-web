@@ -11,6 +11,7 @@ export async function fetchClientSecret() {
   const session = await stripe.checkout.sessions.create({
     customer_creation: "always",
     ui_mode: "embedded",
+    allow_promotion_codes: true,
     line_items: [
       {
         // Provide the exact Price ID (for example, price_1234) of
