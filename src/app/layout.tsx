@@ -11,24 +11,14 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "o11n – Making your ideas actionable",
+  title: "o11n – Orchestrate Code with a Prompt",
   description:
-    "Talk to your codebase, create new features and edit existing ones without even opening a file—no login, no API keys, no subscription.",
-  keywords: [
-    "AI coding",
-    "developer automation",
-    "code generation",
-    "codebase editing",
-    "prompt engineering",
-    "LLM workflows",
-    "o11n",
-    "AI developer tools",
-  ],
+    "Orchestrate your code with o11n: talk to your codebase to build features, refine existing code, and streamline workflows. No login, API keys, or subscription.",
   metadataBase: new URL("https://o11n.life"),
   openGraph: {
-    title: "o11n – Making your ideas actionable",
+    title: "o11n – Orchestrate Code with a Prompt",
     description:
-      "Talk to your codebase, create new features and edit existing ones without even opening a file—no login, no API keys, no subscription.",
+      "Orchestrate your code with o11n: talk to your codebase to build features, refine existing code, and streamline workflows. No login, API keys, or subscription.",
     url: "https://o11n.life",
     type: "website",
     siteName: "o11n",
@@ -45,21 +35,15 @@ export const metadata: Metadata = {
         height: 1200,
         alt: "o11n",
       },
-      {
-        url: "/600x315.png",
-        width: 600,
-        height: 315,
-        alt: "o11n",
-      },
     ],
   },
   twitter: {
     card: "summary_large_image",
     site: "@o11n_app",
     creator: "@o11n_app",
-    title: "o11n – Making your ideas actionable",
+    title: "o11n – Orchestrate Code with a Prompt",
     description:
-      "Talk to your codebase, create new features and edit existing ones without even opening a file—no login, no API keys, no subscription.",
+      "Orchestrate your code with o11n: talk to your codebase to build features, refine existing code, and streamline workflows. No login, API keys, or subscription.",
     images: ["/1200x675.png"],
   },
   icons: {
