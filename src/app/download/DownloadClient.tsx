@@ -13,9 +13,7 @@ export default function DownloadClient() {
   const searchParams = useSearchParams();
   const sessionId = searchParams.get("session_id");
   const [links, setLinks] = useState<Links | null>(null);
-  const [error, setError] = useState<string>(
-    "You must complete a purchase before downloading the app."
-  );
+  const [error, setError] = useState<string>("");
   useEffect(() => {
     if (!sessionId) {
       setError("No session ID provided. Please complete your purchase first.");
