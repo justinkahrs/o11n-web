@@ -1,6 +1,6 @@
 import { Box, Container, Link, Button } from "@mui/material";
 import ReactMarkdown from "react-markdown";
-// @ts-expect-error fuck if I know
+// @ts-expect-error unknown import type
 import terms from "./terms.md?raw";
 export default function Terms() {
   console.log({ terms });

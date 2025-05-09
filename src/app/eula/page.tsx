@@ -3,6 +3,7 @@ import React from "react";
 import { Box, Container, Button } from "@mui/material";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
+// @ts-expect-error unknown import type
 import eula from "./eula.md?raw";
 export default function EulaPage() {
   return (
@@ -20,10 +21,18 @@ export default function EulaPage() {
         </Button>
         <ReactMarkdown
           components={{
-            h1: ({ children }) => <h1 style={{ marginTop: "1em" }}>{children}</h1>,
-            h2: ({ children }) => <h2 style={{ marginTop: "1em" }}>{children}</h2>,
-            p: ({ children }) => <p style={{ marginBottom: "1em" }}>{children}</p>,
-            ul: ({ children }) => <ul style={{ marginBottom: "1em" }}>{children}</ul>,
+            h1: ({ children }) => (
+              <h1 style={{ marginTop: "1em" }}>{children}</h1>
+            ),
+            h2: ({ children }) => (
+              <h2 style={{ marginTop: "1em" }}>{children}</h2>
+            ),
+            p: ({ children }) => (
+              <p style={{ marginBottom: "1em" }}>{children}</p>
+            ),
+            ul: ({ children }) => (
+              <ul style={{ marginBottom: "1em" }}>{children}</ul>
+            ),
             li: ({ children }) => <li style={{ margin: "1em" }}>{children}</li>,
           }}
         >
