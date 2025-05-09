@@ -3,7 +3,6 @@ import ReactMarkdown from "react-markdown";
 // @ts-expect-error unknown import type
 import privacy from "./privacy.md?raw";
 export default function Privacy() {
-  console.log({ privacy });
   return (
     <Box
       sx={{

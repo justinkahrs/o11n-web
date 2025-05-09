@@ -3,7 +3,6 @@ import ReactMarkdown from "react-markdown";
 // @ts-expect-error unknown import type
 import terms from "./terms.md?raw";
 export default function Terms() {
-  console.log({ terms });
   return (
     <Box
       sx={{
