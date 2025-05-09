@@ -1,13 +1,16 @@
 "use client";
 import React from "react";
+import { useState } from "react";
 import { Box, Typography, Button, Stack } from "@mui/material";
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import { LenisContext } from "../Providers";
 import LogoSVG from "./LogoSVG";
+import YoutubeModal from "./YoutubeModal";
 
 export default function HeroSection() {
   const lenis = useContext(LenisContext);
+  const [videoOpen, setVideoOpen] = useState(false);
 
   const handleGetEarlyAccess = () => {
     if (lenis) {
@@ -78,12 +81,21 @@ export default function HeroSection() {
             >
               Buy now
             </Button>
-            <Button variant="outlined" color="secondary">
+            <Button
+              variant="outlined"
+              color="secondary"
+              onClick={() => setVideoOpen(true)}
+            >
               See It Work
             </Button>
           </Stack>
         </motion.div>
       </Stack>
+      <YoutubeModal
+        open={videoOpen}
+        onClose={() => setVideoOpen(false)}
+        videoId="a0jFQqKPnSs"
+      />
     </Box>
   );
 }

@@ -10,12 +10,14 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { LenisContext, ThemeContext } from "../Providers";
+import YoutubeModal from "./YoutubeModal";
 
 export default function UseCasesSection() {
   const [bg, setBg] = useState("#000");
   const [text, setText] = useState("#FFF");
   const themeCtx = useContext(ThemeContext);
   const lenis = useContext(LenisContext);
+  const [videoOpen, setVideoOpen] = useState(false);
   const [transformStyle, setTransformStyle] = useState({});
   const isMobile = useMediaQuery(themeCtx?.theme.breakpoints.down("sm") || "");
   // const isDarkMode = theme.palette.mode === "dark";
@@ -120,9 +122,16 @@ export default function UseCasesSection() {
           )}
         </Box>
         <Box sx={{ textAlign: "center", mt: 4 }}>
-          <Button variant="contained">See how it works</Button>
+          <Button variant="contained" onClick={() => setVideoOpen(true)}>
+            See how it works
+          </Button>
         </Box>
       </Box>
+      <YoutubeModal
+        open={videoOpen}
+        onClose={() => setVideoOpen(false)}
+        videoId="a0jFQqKPnSs"
+      />
     </div>
   );
 }
