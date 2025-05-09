@@ -77,6 +77,17 @@ export default function Footer() {
           .
         </Typography>
       </Box>
+      <Stack direction="row" spacing={3} justifyContent="center" sx={{ mb: 2 }}>
+        <Link href="/eula" sx={{ color: theme.palette.text.primary }}>
+          EULA
+        </Link>
+        <Link href="/privacy" sx={{ color: theme.palette.text.primary }}>
+          Privacy
+        </Link>
+        <Link href="/terms" sx={{ color: theme.palette.text.primary }}>
+          Terms
+        </Link>
+      </Stack>
       <Box sx={{ display: "flex", justifyContent: "center" }}>
         <iframe
           title="Climate pledge badge"

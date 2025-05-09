@@ -3,6 +3,9 @@ import { stripe } from "../../../../lib/stripe";
 export async function POST(req: Request) {
   const origin = req.headers.get("origin") ?? "";
   const session = await stripe.checkout.sessions.create({
+    consent_collection: {
+      terms_of_service: "required",
+    },
     customer_creation: "always",
     line_items: [
       {

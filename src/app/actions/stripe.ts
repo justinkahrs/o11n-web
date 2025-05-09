@@ -9,6 +9,9 @@ export async function fetchClientSecret() {
 
   // Create Checkout Sessions from body params.
   const session = await stripe.checkout.sessions.create({
+    consent_collection: {
+      terms_of_service: "required",
+    },
     customer_creation: "always",
     ui_mode: "embedded",
     allow_promotion_codes: true,
