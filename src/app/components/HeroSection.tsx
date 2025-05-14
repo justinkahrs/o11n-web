@@ -94,7 +94,7 @@ export default function HeroSection() {
       <YoutubeModal
         open={videoOpen}
         onClose={() => setVideoOpen(false)}
-        videoId="a0jFQqKPnSs"
+        videoId="skla9HZTTfc"
       />
     </Box>
   );
